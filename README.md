@@ -1,69 +1,49 @@
-# React + TypeScript + Vite
+# Movies
+A movie database project showcasing modern React development, architectural patterns, and backend integration.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+## Overview
+This repository documents my journey of learning and applying React best practices, routing, state management and backend connectivity.  
+It serves as both a reference and a portfolio of implemented features, with a focus on clean, scalable architecture.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## Key Concepts Learned
+- **React Routers**
+  - Implemented client-side navigation using `react-router-dom`.
+  - Dynamic routing with URL parameters.
+  - Nested routes and layout components.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Component Architecture**
+  - Separation of **UI**, **Pages**, **Containers**, and **Atoms** for maintainability.
+  - Reusable components with clear responsibilities.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Custom Hooks**
+  - Created reusable logic for fetching data, handling forms, and state persistence.
+  - Leveraged hooks to keep components clean and focused on presentation.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+- **State Management**
+  - Utilized React’s built-in `useState`, `useEffect`, and `useContext`.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Planned Features
+- **Database Integration**
+  - Connect to a backend database (likely PostgreSQL or MongoDB) via Node.js/Express.
+  - Learn how to handle CRUD operations and REST API integration.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **Authentication**
+  - Implement secure login/logout and session handling.
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **Deployment**
+  - Deploy to a live environment (GitHub Pages / Vercel) with CI/CD setup.
+
+---
+
+## Tech Stack
+- **Frontend:** React, React Router, Tailwind CSS
+- **Backend (Planned):** Node.js, Express
+- **Database (Planned):** PostgreSQL / MongoDB
+- **Version Control:** Git + GitHub (SSH setup)
+
