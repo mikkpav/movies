@@ -1,13 +1,13 @@
 # Movies
 A movie database project showcasing modern React development, architectural patterns, and backend integration.
 
----
+
 
 ## Overview
 This repository documents my journey of learning and applying React best practices, routing, state management and backend connectivity.  
 It serves as both a reference and a portfolio of implemented features, with a focus on clean, scalable architecture.
 
----
+
 
 ## Key Concepts Learned
 - **React Routers**
@@ -26,7 +26,7 @@ It serves as both a reference and a portfolio of implemented features, with a fo
 - **State Management**
   - Utilized React’s built-in `useState`, `useEffect`, and `useContext`.
 
----
+
 
 ## Planned Features
 - **Database Integration**
@@ -39,7 +39,7 @@ It serves as both a reference and a portfolio of implemented features, with a fo
 - **Deployment**
   - Deploy to a live environment (GitHub Pages / Vercel) with CI/CD setup.
 
----
+
 
 ## Tech Stack
 - **Frontend:** React, React Router, Tailwind CSS
