@@ -7,8 +7,8 @@ type MovieListProps = {
 
 export default function MovieList({ movies }: MovieListProps) {
     return (
-        <ul>
-        {movies.map((movie) => (
+        <ul className='flex flex-col gap-4'>
+        {movies.map( movie => (
           <li key={movie.id}>
             <MovieListItem movie={movie} />
           </li>

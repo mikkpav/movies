@@ -16,13 +16,13 @@ export interface TMDBMovieResponse {
 
 export interface Movie {
     id: number;
+    title: string;
     overview: string;
     posterPathSmall: string;
     backdropPathSmall: string;
     posterPathLarge: string;
     backdropPathLarge: string;
     releaseDate: string;
-    title: string;
     voteAverage: number;
     voteCount: number;
 }
@@ -51,13 +51,13 @@ export interface Genre {
 
 export interface MovieDetails {
     id: number;
+    title: string;
     overview: string;
     posterPathSmall: string;
     backdropPathSmall: string;
     posterPathLarge: string;
     backdropPathLarge: string;
     releaseDate: string;
-    title: string;
     voteAverage: number;
     voteCount: number;
     budget: number;

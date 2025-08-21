@@ -14,7 +14,7 @@ export default function MovieListItem({ movie }: MovieListItemProps) {
 
     return (
         <div 
-            className='flex flex-row m-6 p-2 max-h-40 bg-gray-100 rounded-2xl cursor-pointer' 
+            className='flex flex-row p-2 max-h-40 bg-gray-100 rounded-2xl cursor-pointer' 
             onClick={ navigateToMovieDetails }>
             <img 
                 src={movie.posterPathSmall} 

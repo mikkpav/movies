@@ -9,12 +9,12 @@ import MovieDetailsPage from './features/details/pages/MovieDetailsPage'
 
 function App() {
   return (
-    <div className='flex flex-col'>
-      <header className='flex max-h-30 px-4'>
+    <div className='flex flex-col gap-10'>
+      <header className='flex justify-center max-h-30 pt-6'>
         <img src={FilmIcon} className='object-contain max-w-20'></img>
-        <h1 className='flex-1 text-center p-6 text-4xl font-bold'>Movies</h1>
+        <h1 className='text-center p-6 text-4xl font-bold'>Movies</h1>
       </header>
-      <div className='flex flex-row'>
+      <div className='flex flex-row gap-4'>
         <LeftMenu />
         <ContentArea>
           <Routes>

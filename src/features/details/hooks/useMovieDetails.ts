@@ -15,7 +15,6 @@ export function useMovieDetails(id: string) {
             const data = await getMovieDetails(id);
             setDetails(data);
         } catch (err) {
-            console.log('2 >>>', err);
             setError(err as Error);
         } finally {
             setLoading(false);

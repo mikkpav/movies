@@ -1,5 +1,5 @@
 import { API_BASE, tmdbFetchOptions } from '../config/api';
-import type { Movie, MoviesResponse, TMDBMovieResponse, MoviesDetailsResponse, MovieDetails, TMDBMovieDetailsResponse } from '../types/movies';
+import type { Movie, MoviesResponse, TMDBMovieResponse, MovieDetails, TMDBMovieDetailsResponse } from '../types/movies';
 
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/';
 const POSTER_SIZE_LIST = 'w154';
@@ -22,7 +22,6 @@ export async function apiClient<T>(path: string): Promise<ApiResponse<T>> {
     }
 
     const data: T = await response.json();
-    console.log('>>> response: ', data)
     return { data, status: response.status };
   } catch (error) {
     console.error('API Error:', error);

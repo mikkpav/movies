@@ -9,7 +9,7 @@ export default function LeftMenuItem({ to, children }: LeftMenuItemProps) {
     return (
         <Link 
             to={to}
-            className='bg-white hover:bg-gray-100 hover:rounded-lg mx-2 p-2'>
+            className='bg-white hover:bg-gray-100 hover:rounded-lg p-2'>
             {children}
         </Link>
     );
