@@ -39,7 +39,7 @@ export interface TMDBMovieDetailsResponse {
     budget: number;
     genres: Genre[];
     homepage: string;
-    imdb_id: number;
+    imdb_id: string;
     origin_country: string;
     tagline: string;
 }
@@ -63,7 +63,7 @@ export interface MovieDetails {
     budget: number;
     genres: Genre[];
     homepage: string;
-    imdbId: number;
+    imdbId: string;
     originCountry: string;
     tagline: string;
 }
