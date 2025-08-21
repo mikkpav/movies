@@ -8,9 +8,5 @@ export default function MovieListContainer() {
   if (loading) return <div />;
   if (error) return <ErrorMessage message={error.message} onRetry={retry} />;
 
-  return (
-    movies && (
-      <MovieList movies={movies} />
-    )
-  );
+  return movies && <MovieList movies={movies} />;
 }

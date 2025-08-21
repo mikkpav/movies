@@ -1,3 +1,8 @@
+export interface MoviesResponse {
+    page: number;
+    results: TMDBMovieResponse[];
+}
+
 export interface TMDBMovieResponse {
     id: number;
     title: string;
@@ -7,11 +12,6 @@ export interface TMDBMovieResponse {
     backdrop_path: string;
     vote_average: number;
     vote_count: number;
-}
-
-export interface MoviesResponse {
-    page: number;
-    results: TMDBMovieResponse[];
 }
 
 export interface Movie {
@@ -25,4 +25,45 @@ export interface Movie {
     title: string;
     voteAverage: number;
     voteCount: number;
+}
+
+export interface TMDBMovieDetailsResponse {
+    id: number;
+    title: string;
+    overview: string;
+    release_date: string;
+    poster_path: string;
+    backdrop_path: string;
+    vote_average: number;
+    vote_count: number;
+    budget: number;
+    genres: Genre[];
+    homepage: string;
+    imdb_id: number;
+    origin_country: string;
+    tagline: string;
+}
+
+export interface Genre {
+    id: number;
+    name: string;
+}
+
+export interface MovieDetails {
+    id: number;
+    overview: string;
+    posterPathSmall: string;
+    backdropPathSmall: string;
+    posterPathLarge: string;
+    backdropPathLarge: string;
+    releaseDate: string;
+    title: string;
+    voteAverage: number;
+    voteCount: number;
+    budget: number;
+    genres: Genre[];
+    homepage: string;
+    imdbId: number;
+    originCountry: string;
+    tagline: string;
 }

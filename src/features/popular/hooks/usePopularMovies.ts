@@ -12,12 +12,12 @@ export function usePopularMovies() {
         setError(null);
 
         try {
-        const data = await getPopularMovies();
-        setMovies(data);
+            const data = await getPopularMovies();
+            setMovies(data);
         } catch (err) {
-        setError(err as Error);
+            setError(err as Error);
         } finally {
-        setLoading(false);
+            setLoading(false);
         }
     }, []);
 
