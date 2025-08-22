@@ -3,9 +3,9 @@ import LeftMenu from './LeftMenu'
 import ContentArea from './ContentArea'
 import { Route, Routes } from 'react-router-dom'
 import MovieListPage from './features/popular/pages/MovieListPage'
-import FavoritesList from './FavoritesList'
 import FilmIcon from './assets/film.png'
 import MovieDetailsPage from './features/details/pages/MovieDetailsPage'
+import FavoriteListPage from './features/favorites/pages/FavoriteListPAge'
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
         <ContentArea>
           <Routes>
             <Route path='/' element={ <MovieListPage /> } />
-            <Route path='/favorites' element={ <FavoritesList /> } />
+            <Route path='/favorites' element={ <FavoriteListPage /> } />
             <Route path='/movie/:id' element={ <MovieDetailsPage /> } />
           </Routes>
         </ContentArea>

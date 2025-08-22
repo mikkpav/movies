@@ -25,6 +25,7 @@ export interface Movie {
     releaseDate: string;
     voteAverage: number;
     voteCount: number;
+    favorite: boolean;
 }
 
 export interface TMDBMovieDetailsResponse {
@@ -66,4 +67,5 @@ export interface MovieDetails {
     imdbId: string;
     originCountry: string;
     tagline: string;
+    favorite: boolean;
 }

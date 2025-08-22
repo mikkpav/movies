@@ -40,7 +40,8 @@ function mapMovieApiResponse(data: TMDBMovieResponse): Movie {
         releaseDate: data.release_date,
         title: data.title,
         voteAverage: Math.round(data.vote_average * 10) / 10,
-        voteCount: data.vote_count
+        voteCount: data.vote_count,
+        favorite: false
     }
 }
 
@@ -66,7 +67,8 @@ function mapMovieDetailsApiResponse(data: TMDBMovieDetailsResponse): MovieDetail
         homepage: data.homepage,
         imdbId: data.imdb_id,
         originCountry: data.origin_country,
-        tagline: data.tagline
+        tagline: data.tagline,
+        favorite: false
     }
 }
 
