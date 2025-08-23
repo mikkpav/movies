@@ -5,7 +5,7 @@ import { getPopularMovies } from '../../../api/movieApi';
 export function usePopularMovies() {
     const [movies, setMovies] = useState<Movie[] | null>(null);
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState<Error | null>(null);
+    const [error, setError] = useState<string | null>(null);
 
     const fetchMovies = useCallback(async () => {
         setLoading(true);
@@ -15,7 +15,8 @@ export function usePopularMovies() {
             const data = await getPopularMovies();
             setMovies(data);
         } catch (err) {
-            setError(err as Error);
+            console.log(err)
+            setError('Failed to fetch popular movies');
         } finally {
             setLoading(false);
         }

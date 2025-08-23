@@ -6,7 +6,7 @@ export default function MovieListContainer() {
   const { movies, loading, error, retry } = usePopularMovies();
 
   if (loading) return <div />;
-  if (error) return <ErrorMessage message={error.message} onRetry={retry} />;
+  if (error) return <ErrorMessage message={error} onRetry={retry} />;
 
   return movies && <MovieList movies={movies} />;
 }

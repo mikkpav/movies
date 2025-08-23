@@ -7,6 +7,6 @@ export default function MovieDetailsPage() {
     if (!id) return <p>Invalid movie ID: {id}</p>
     
     return (
-        <MovieDetailsContainer id={id} />
+        <MovieDetailsContainer id={Number(id)} />
     );
 }

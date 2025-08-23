@@ -3,8 +3,8 @@ import { formatCurrency, formatDate } from '../../../utils/formats'
 import StarIcon from '../../../assets/star.png'
 import BackButton from '../../../assets/back.png'
 import { useNavigate } from 'react-router-dom';
-import { useFavorites } from '../../favorites/hooks/useFavorites';
 import FavoriteToggle from '../../../components/FavoriteToggle';
+import { useFavoritesContext } from '../../favorites/hooks/FavoritesContext';
 
 type MovieDetailsProps = {
     details: MovieDetails
@@ -12,7 +12,7 @@ type MovieDetailsProps = {
 
 export default function MovieDetails({ details }: MovieDetailsProps) {
     const navigate = useNavigate();
-    const { favorites, toggleFavorite } = useFavorites();
+    const { favorites, toggleFavorite } = useFavoritesContext();
 
     function handleBackAction() {
         navigate(-1);

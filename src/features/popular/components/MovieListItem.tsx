@@ -1,15 +1,15 @@
-import type { Movie } from "../../../types/movies";
+import type { Movie, MovieDetails } from "../../../types/movies";
 import { useNavigate } from 'react-router-dom';
-import { useFavorites } from '../../favorites/hooks/useFavorites';
 import FavoriteToggle from '../../../components/FavoriteToggle';
+import { useFavoritesContext } from '../../favorites/hooks/FavoritesContext';
 
 type MovieListItemProps = {
-    movie: Movie
+    movie: Movie | MovieDetails
 };
 
 export default function MovieListItem({ movie }: MovieListItemProps) {
     const navigate = useNavigate();
-    const { favorites, toggleFavorite } = useFavorites();
+    const { favorites, toggleFavorite } = useFavoritesContext();
 
     function navigateToMovieDetails() {
         navigate(`/movie/${movie.id}`);

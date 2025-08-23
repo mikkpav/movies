@@ -3,7 +3,7 @@ import MovieDetails from '../components/MovieDetails';
 import { useMovieDetails } from '../hooks/useMovieDetails';
 
 type MovieDetailsContainerProps = {
-    id: string
+    id: number
 }
 
 export default function MovieDetailsContainer({ id }: MovieDetailsContainerProps) {

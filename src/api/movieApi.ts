@@ -72,7 +72,7 @@ function mapMovieDetailsApiResponse(data: TMDBMovieDetailsResponse): MovieDetail
     }
 }
 
-export async function getMovieDetails(id: string): Promise<MovieDetails> {
+export async function getMovieDetails(id: number): Promise<MovieDetails> {
     const { data } = await apiClient<TMDBMovieDetailsResponse>(`/movie/${id}`);
     return mapMovieDetailsApiResponse(data);
 }

@@ -50,22 +50,11 @@ export interface Genre {
     name: string;
 }
 
-export interface MovieDetails {
-    id: number;
-    title: string;
-    overview: string;
-    posterPathSmall: string;
-    backdropPathSmall: string;
-    posterPathLarge: string;
-    backdropPathLarge: string;
-    releaseDate: string;
-    voteAverage: number;
-    voteCount: number;
+export interface MovieDetails extends Movie {
     budget: number;
     genres: Genre[];
     homepage: string;
     imdbId: string;
     originCountry: string;
     tagline: string;
-    favorite: boolean;
 }
