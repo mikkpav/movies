@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 type LeftMenuItemProps = {
     to: string,
@@ -7,10 +7,12 @@ type LeftMenuItemProps = {
 
 export default function LeftMenuItem({ to, children }: LeftMenuItemProps) {
     return (
-        <Link 
+        <NavLink 
             to={to}
-            className='bg-white hover:bg-gray-100 hover:rounded-lg p-2'>
+            className={({ isActive }) =>
+                `p-2 rounded-md ${isActive ? 'bg-gray-100 hover:bg-gray-100' : 'bg-white hover:bg-gray-50'}`
+            }>
             {children}
-        </Link>
+        </NavLink>
     );
 }
