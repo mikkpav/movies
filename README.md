@@ -26,13 +26,14 @@ It serves as both a reference and a portfolio of implemented features, with a fo
 - **State Management**
   - Utilized React’s built-in `useState`, `useEffect`, and `useContext`.
 
+- **Server and Database Integration**
+  - Connect to a backend database PostgreSQL via Node.js/Express using Render's servers.
+  - Use a local Postgres instance in a Docker container for testing.
+  - Learn how to handle CRUD operations and REST API integration.
+
 
 
 ## Planned Features
-- **Database Integration**
-  - Connect to a backend database (likely PostgreSQL or MongoDB) via Node.js/Express.
-  - Learn how to handle CRUD operations and REST API integration.
-
 - **Authentication**
   - Implement secure login/logout and session handling.
 
