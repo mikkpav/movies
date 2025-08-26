@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from 'react';
 import type { MovieDetails } from '../../../types/movies';
-import { getMovieDetails } from '../../../api/movieApi';
+import { getMovieDetails } from '../../../api/tmdbApi';
 
 export function useMovieDetails(id: number) {
     const [details, setDetails] = useState<MovieDetails | null>(null);

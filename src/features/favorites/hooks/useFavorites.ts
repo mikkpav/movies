@@ -1,21 +1,32 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
+import { toggleFavoriteMovie, getFavorites } from '../../../api/moviesApi';
+import type { Favorite } from '../../../types/movies';
 
 export function useFavorites() {
-    const STORAGE_KEY = 'favorites';
-    const [favorites, setFavorites] = useState<number[]>(() => {
-        const stored = localStorage.getItem(STORAGE_KEY);
-        return stored ? JSON.parse(stored) : [];
-    });
+    const [favorites, setFavorites] = useState<Favorite[]>([]);
+
+    useEffect(() => {
+        getFavorites().then(response => {
+            console.log(`>> Fetched favorites from backend: ${response.data}`)
+            setFavorites(response.data);
+        }).catch(err => {
+            console.error("Error fetching favorites: ", err);
+        });
+    }, []);
 
     const toggleFavorite = useCallback((id: number) => {
-        setFavorites((prev) => {
-            const updated = prev.includes(id)
-                ? prev.filter(prevId => prevId !== id)
-                : [...prev, id];
-            
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
-            return updated;
-        });
+        toggleFavoriteMovie(id)
+            .then(response => {
+                const { movieId, action, createdAt } = response.data;
+                setFavorites(prev => 
+                    action === 'added'
+                    ? [...prev, { movieId: movieId, createdAt: createdAt } ]
+                    : prev.filter(f => f.movieId !== movieId)
+                ) 
+            })
+            .catch(error => {
+                console.error("Error fetching favorites:", error);
+            })
     }, []);
 
     return { favorites, toggleFavorite };

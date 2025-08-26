@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from 'react';
 import type { Movie } from '../../../types/movies';
-import { getPopularMovies } from '../../../api/movieApi';
+import { getPopularMovies } from '../../../api/tmdbApi';
 
 export function usePopularMovies() {
     const [movies, setMovies] = useState<Movie[] | null>(null);
@@ -15,7 +15,7 @@ export function usePopularMovies() {
             const data = await getPopularMovies();
             setMovies(data);
         } catch (err) {
-            console.log(err)
+            console.log(err);
             setError('Failed to fetch popular movies');
         } finally {
             setLoading(false);

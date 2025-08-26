@@ -1,5 +1,5 @@
-import MovieList from '../containers/MovieListContainer';
+import MovieListContainer from '../containers/MovieListContainer';
 
 export default function MovieListPage() {
-  return <MovieList />;
+  return <MovieListContainer />;
 }
