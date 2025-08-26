@@ -27,7 +27,7 @@ It serves as both a reference and a portfolio of implemented features, with a fo
   - Utilized React’s built-in `useState`, `useEffect`, and `useContext`.
 
 - **Server and Database Integration**
-  - Connect to a backend database PostgreSQL via Node.js/Express using Render's servers.
+  - Connect using Axios to a backend PostgreSQL database via Node.js/Express using Render's servers.
   - Use a local Postgres instance in a Docker container for testing.
   - Learn how to handle CRUD operations and REST API integration.
 
