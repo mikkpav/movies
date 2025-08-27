@@ -14,11 +14,11 @@ moviesClient.interceptors.request.use(config => {
 
 export const toggleFavoriteMovie = async (movieId: number): Promise<AxiosResponse<FavoriteToggleResponse>> => {
     const userId = getUserId();
-    return moviesClient.post('/favorites/toggle', {  user_id: userId, movie_id: movieId });
+    return moviesClient.post('/favorites/toggle', {  userId: userId, movieId: movieId });
 };
 
 export const getFavorites = async () => {
     const userId = getUserId();
-    return moviesClient.get('favorites', { params: { user_id: userId }});
+    return moviesClient.get('favorites', { params: { userId: userId }});
 };
 

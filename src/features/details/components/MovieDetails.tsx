@@ -45,7 +45,7 @@ export default function MovieDetails({ details }: MovieDetailsProps) {
                     <ul className='flex flex-row gap-4'> { 
                             details.genres.map ( genre => (
                                 <li 
-                                    key={details.id}
+                                    key={genre.id}
                                     className='text-s font-bold'>
                                         {genre.name}
                                 </li>
