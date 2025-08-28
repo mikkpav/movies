@@ -11,5 +11,10 @@ export default defineConfig({
   base: '/movies',
   server: {
     host: true,
-  }
+  },
+  build: {
+    rollupOptions: {
+      input: '/index.html',
+    },
+  },
 })
