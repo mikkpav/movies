@@ -18,6 +18,7 @@ export function useFavorites() {
         toggleFavoriteMovie(id)
             .then(response => {
                 const { movieId, action, createdAt } = response.data;
+                console.log('- toggle response: ', movieId, action, createdAt)
                 setFavorites(prev => 
                     action === 'added'
                     ? [...prev, { movieId: movieId, createdAt: createdAt } ]
@@ -25,7 +26,7 @@ export function useFavorites() {
                 ) 
             })
             .catch(error => {
-                console.error("Error fetching favorites:", error);
+                console.error("Error toggling favorite:", error);
             })
     }, []);
 

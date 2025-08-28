@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from 'react';
 import type { MovieDetails } from '../../../types/movies';
-import { getMovieDetails } from '../../../api/tmdbApi';
+import { getFavoriteMovies } from '../../../api/moviesApi';
 import { useFavoritesContext } from './FavoritesContext';
 
 export function useFavoriteMovies() {
@@ -19,10 +19,8 @@ export function useFavoriteMovies() {
         setError(null);
 
         try {
-            const results = await Promise.all(
-                favorites.map(async (favorite) => await getMovieDetails(favorite.movieId))
-            );
-            setFavoriteMovies(results);
+            const favoriteMovies = await getFavoriteMovies();
+            setFavoriteMovies(favoriteMovies.data);
         } catch (err) {
             console.error(err);
             setError('Failed to fetch favorite movies');
