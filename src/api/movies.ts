@@ -1,6 +1,6 @@
 import axios, { type AxiosResponse } from 'axios';
 import { getUserId } from '../utils/userId';
-import type { FavoriteToggleResponse, MovieDetails } from '../types/movies';
+import type { Movie, FavoriteToggleResponse, MovieDetails } from '../types/movies';
 
 const moviesClient = axios.create({
     baseURL: import.meta.env.VITE_MOVIES_API_URL
@@ -25,4 +25,12 @@ export const getFavorites = async () => {
 export const getFavoriteMovies = async (): Promise<AxiosResponse<MovieDetails[]>> => {
     const userId = getUserId();
     return moviesClient.get('/favorites/movies', { params: { userId: userId }});
+};
+
+export const getPopularMovies = async (): Promise<AxiosResponse<Movie[]>> => {
+    return moviesClient.get('/movies/popular');
+};
+
+export const getMovieDetails = async (movieId: number): Promise<AxiosResponse<MovieDetails>> => {
+    return moviesClient.get(`/movies/${movieId}`);
 };

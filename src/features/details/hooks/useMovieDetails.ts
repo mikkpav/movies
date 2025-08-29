@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from 'react';
 import type { MovieDetails } from '../../../types/movies';
-import { getMovieDetails } from '../../../api/tmdbApi';
+import { getMovieDetails } from '../../../api/movies';
 
 export function useMovieDetails(id: number) {
     const [details, setDetails] = useState<MovieDetails | null>(null);
@@ -12,8 +12,8 @@ export function useMovieDetails(id: number) {
         setError(null);
 
         try {
-            const data = await getMovieDetails(id);
-            setDetails(data);
+            const details = await getMovieDetails(id);
+            setDetails(details.data);
         } catch (err) {
             setError(err as Error);
         } finally {
