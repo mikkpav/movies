@@ -8,10 +8,7 @@ export function useFavorites() {
     useEffect(() => {
         getFavorites()
             .then((response) => {
-                console.log(
-                    '>> Fetched favorites from backend: ',
-                    response.data
-                );
+                console.log(response.data);
                 setFavorites(response.data);
             })
             .catch((err) => {
