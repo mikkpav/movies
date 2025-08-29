@@ -19,15 +19,17 @@ export default function MovieDetails({ details }: MovieDetailsProps) {
     }
 
     return (
-        <div className='flex flex-col gap-6'>
+        <div className='flex flex-col gap-6 min-w-0'>
             <button className='flex-1 w-6 cursor-pointer' onClick={handleBackAction}>
                 <img src={BackButton} className='bg-white'/>
             </button>
-            <div className='flex max-h-100 gap-6'>
-                <img 
-                    src={details.posterPathLarge} 
-                    alt={details.title}
-                    className='max-h-full object-contain rounded-2xl' />
+            <div className='flex flex-col md:flex-row max-h-60 md:max-h-100 gap-6'>
+                <div className='flex justify-center rounded-lg overflow-hidden flex-shrink-0 h-full'>
+                    <img 
+                        src={details.posterPathLarge} 
+                        alt={details.title}
+                        className='max-h-full object-contain bg-red-200 rounded-2xl' />
+                </div>
                 <div className='flex flex-1 flex-col gap-4'>
                     <section className='flex justify-between'>
                         <h1 className='text-2xl font-semibold'>{details.title}</h1>
@@ -58,14 +60,14 @@ export default function MovieDetails({ details }: MovieDetailsProps) {
                             href={details.homepage}
                             target='_blank' 
                             rel='noopener noreferrer'
-                            className='hover:underline'>
+                            className='hover:underline truncate'>
                                 {details.homepage}
                         </a>
                         <a 
                             href={`https://www.imdb.com/title/${details.imdbId}`} 
                             target='_blank' 
                             rel='noopener noreferrer'
-                            className='hover:underline'>
+                            className='hover:underline truncate'>
                                 IMDB: {details.title}
                         </a>
                         <p>{details.originCountry}</p>
