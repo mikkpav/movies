@@ -24,7 +24,7 @@ export default function MovieListItem({ movie }: MovieListItemProps) {
                 onClick={ navigateToMovieDetails } />
             <div className='flex flex-col justify-end gap-2'>
                 <section className='flex justify-between'>
-                    <h1 className='font-semibold'>{movie.title}</h1>
+                    <h1 className='font-semibold line-clamp-2'>{movie.title}</h1>
                     <FavoriteToggle 
                         movieId={movie.id} 
                         favorites={favorites} 
