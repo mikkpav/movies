@@ -44,12 +44,17 @@ export interface MovieDetails extends Movie {
 }
 
 export interface Favorite {
-  movieId: number;
-  createdAt: string | null;
+    movieId: number;
+    createdAt: string | null;
 }
 
 export interface FavoriteToggleResponse {
-  movieId: number;
-  action: string;
-  createdAt: string | null;
+    movieId: number;
+    action: string;
+    createdAt: string | null;
+}
+
+export interface SearchMovieItem {
+    id: string;
+    title: string;
 }
