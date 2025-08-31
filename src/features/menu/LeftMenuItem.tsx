@@ -10,7 +10,7 @@ export default function LeftMenuItem({ to, children }: LeftMenuItemProps) {
         <NavLink 
             to={to}
             className={({ isActive }) =>
-                `p-2 rounded-md ${isActive ? 'bg-gray-100 hover:bg-gray-100' : 'bg-white hover:bg-gray-50'}`
+                `h-12 p-2 rounded-md ${isActive ? 'bg-gray-100 hover:bg-gray-100' : 'bg-white hover:bg-gray-50'}`
             }>
             {children}
         </NavLink>
