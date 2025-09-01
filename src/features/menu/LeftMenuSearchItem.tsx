@@ -14,7 +14,11 @@ export default function LeftMenuSearchItem({ onSelect }: SearchDropdownProps) {
     const mapMovieItemToDropdownItem = (movieItem: Movie): DropdownItem => {
         return {
             id: movieItem.id,
-            title: movieItem.title
+            title: movieItem.title,
+            subtitle: movieItem.overview,
+            rating: movieItem.voteAverage,
+            date: movieItem.releaseDate,
+            imageUrl: movieItem.posterPathSmall
         }
     }
 

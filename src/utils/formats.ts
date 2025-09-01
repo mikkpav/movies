@@ -16,3 +16,7 @@ export const formatDate = (date: string | Date, locale = 'en-US') => {
             day: 'numeric' })
         .format(new Date(date));
 };
+
+export const getYearFromDate = (date: string | Date) => {
+    return String(new Date(date).getFullYear());
+};

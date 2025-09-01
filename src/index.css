@@ -30,4 +30,12 @@
     .header-font {
         @apply text-xl font-semibold;
     }
+
+    .font-list-item-title {
+        @apply text-base font-semibold
+    }
+
+    .font-list-item-content {
+        @apply text-sm
+    }
 }

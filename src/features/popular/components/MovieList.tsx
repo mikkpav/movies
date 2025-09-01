@@ -1,17 +1,17 @@
 import type { Movie } from '../../../types/movies';
-import MovieListItem from './MovieListItem';
-import { motion, AnimatePresence} from 'framer-motion';
+import MovieListItem from '../../../components/MovieListItem';
+import { motion, AnimatePresence } from 'framer-motion';
 
 type MovieListProps = {
-    movies: Movie[]
+    movies: Movie[];
 };
 
 export default function MovieList({ movies }: MovieListProps) {
     return (
-        <ul className='flex flex-col gap-4'>
+        <ul className="flex flex-col gap-4">
             <AnimatePresence>
-                { movies.map( movie => (
-                    <motion.li 
+                {movies.map((movie) => (
+                    <motion.li
                         key={movie.id}
                         layout
                         initial={{ opacity: 0, y: 20 }}
@@ -24,5 +24,5 @@ export default function MovieList({ movies }: MovieListProps) {
                 ))}
             </AnimatePresence>
         </ul>
-    )
+    );
 }

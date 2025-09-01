@@ -1,8 +1,14 @@
 import { useState, useEffect, useRef, type ChangeEvent } from 'react';
+import PosterIcon from '../assets/poster-icon.png';
+import { getYearFromDate } from '../utils/formats';
 
 export type DropdownItem = {
     id: number,
-    title: string
+    title: string,
+    subtitle: string,
+    rating: number,
+    date: string,
+    imageUrl: string,
 }
 
 type SearchDropdownProps = {
@@ -19,6 +25,7 @@ export default function SearchDropdown({ query, results, onQueryChange, onSelect
     const handleChange = (e: ChangeEvent <HTMLInputElement>) => {
         onQueryChange(e.target.value);
         setIsOpen(true);
+        console.log('date: ', results.map(item => item.date))
     };
 
     const handleSelect = (item: DropdownItem) => {
@@ -50,7 +57,7 @@ export default function SearchDropdown({ query, results, onQueryChange, onSelect
     };
 
     return (
-        <div className="p-1 relative" ref={dropdownRef}>
+        <div className='p-1 relative' ref={dropdownRef}>
             <input
                 type="text"
                 value={query}
@@ -61,14 +68,30 @@ export default function SearchDropdown({ query, results, onQueryChange, onSelect
                 placeholder="Search movies..."
             />
             {isOpen && results.length > 0 && (
-                <ul className="absolute bg-white border mt-1 w-full md:w-100 z-10 max-h-80 overflow-auto shadow rounded-md">
-                    {results.map((movie) => (
+                <ul className='absolute w-full mt-1 md:w-100 bg-white border z-10 shadow-md rounded-md'>
+                    {results.map((item) => (
                         <li
-                            key={movie.id}
-                            className="h-12 p-2 hover:bg-gray-100 cursor-pointer"
-                            onClick={() => handleSelect(movie)}
+                            key={item.id}
+                            className='p-3 hover:bg-gray-100 cursor-pointer overflow-hidden'
+                            onClick={() => handleSelect(item)}
                         >
-                            {movie.title}
+                            <article className='flex h-30 gap-2'>
+                                {item.imageUrl 
+                                    ? <img src={item.imageUrl} className='object-contain rounded-xl'></img>
+                                    : <img src={PosterIcon} className='object-cover'></img>
+                                }
+                                <div className='flex items-center gap-4'>
+                                    <div className='flex flex-col'>
+                                        <div className='flex gap-2 justify-between'>
+                                            <h1 className='font-list-item-title line-clamp-1'>{item.title}</h1>
+                                            {item.date && <p className='font-list-item-title'>{getYearFromDate(item.date)}</p>
+                                            }
+                                        </div>
+                                        <p className='line-clamp-3 font-list-item-content'>{item.subtitle}</p>
+                                    </div>
+                                    
+                                </div>
+                            </article>
                         </li>
                     ))}
                 </ul>
