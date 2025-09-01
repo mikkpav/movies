@@ -5,6 +5,7 @@ import BackButton from '../../../assets/back.png'
 import { useNavigate } from 'react-router-dom';
 import FavoriteToggle from '../../../components/FavoriteToggle';
 import { useFavoritesContext } from '../../favorites/hooks/FavoritesContext';
+import PosterIcon from '../../../assets/poster-icon.png';
 
 type MovieDetailsProps = {
     details: MovieDetails
@@ -26,9 +27,9 @@ export default function MovieDetails({ details }: MovieDetailsProps) {
             <div className='flex flex-col md:flex-row max-h-60 md:max-h-100 gap-6'>
                 <div className='flex justify-center rounded-lg overflow-hidden flex-shrink-0 h-full'>
                     <img 
-                        src={details.posterPathLarge} 
+                        src={details.posterPathLarge ?? PosterIcon}
                         alt={details.title}
-                        className='max-h-full object-contain bg-red-200 rounded-2xl' />
+                        className='max-h-full object-contain rounded-2xl' />
                 </div>
                 <div className='flex flex-1 flex-col gap-4'>
                     <section className='flex justify-between'>

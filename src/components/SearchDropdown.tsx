@@ -15,21 +15,22 @@ type SearchDropdownProps = {
     query: string,
     results: DropdownItem[],
     onQueryChange: (q: string) => void,
-    onSelect: (item: DropdownItem) => void;
+    onSelect: (itemId: number) => void;
 }
 
 export default function SearchDropdown({ query, results, onQueryChange, onSelect }: SearchDropdownProps) {
     const [isOpen, setIsOpen] = useState(false);
+    const [selectedIndex, setSelectedIndex] = useState(-1);
     const dropdownRef = useRef<HTMLDivElement>(null);
     
     const handleChange = (e: ChangeEvent <HTMLInputElement>) => {
         onQueryChange(e.target.value);
         setIsOpen(true);
-        console.log('date: ', results.map(item => item.date))
+        setSelectedIndex(-1);
     };
 
     const handleSelect = (item: DropdownItem) => {
-        onSelect(item);
+        onSelect(item.id);
         setIsOpen(false);
     };
 
@@ -44,16 +45,24 @@ export default function SearchDropdown({ query, results, onQueryChange, onSelect
         };
 
         document.addEventListener('mousedown', handleClickOutside);
-
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, []);
 
     const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+        console.log('index: ', selectedIndex)
         if (event.key === 'Escape') {
             setIsOpen(false);
-        }
+        } else if (event.key == 'ArrowDown') {
+            event.preventDefault();
+            setSelectedIndex(prev => prev === results.length - 1 ? 0 : prev + 1)
+        } else if (event.key == 'ArrowUp') {
+            event.preventDefault();
+            setSelectedIndex(prev => prev === 0 ? results.length - 1 : prev - 1)
+        } else if (event.key === "Enter" && selectedIndex >= 0) {
+            handleSelect(results[selectedIndex]);
+        } 
     };
 
     return (
@@ -69,17 +78,16 @@ export default function SearchDropdown({ query, results, onQueryChange, onSelect
             />
             {isOpen && results.length > 0 && (
                 <ul className='absolute w-full mt-1 md:w-100 bg-white border z-10 shadow-md rounded-md'>
-                    {results.map((item) => (
+                    {results.map((item, index) => (
                         <li
                             key={item.id}
-                            className='p-3 hover:bg-gray-100 cursor-pointer overflow-hidden'
+                            className={`p-3 hover:bg-gray-100 cursor-pointer overflow-hidden ${index === selectedIndex ? 'bg-gray-100' : ''}`}
                             onClick={() => handleSelect(item)}
+                            onMouseEnter={() => setSelectedIndex(index)}
+                            onMouseLeave={() => setSelectedIndex(-1)}
                         >
                             <article className='flex h-30 gap-2'>
-                                {item.imageUrl 
-                                    ? <img src={item.imageUrl} className='object-contain rounded-xl'></img>
-                                    : <img src={PosterIcon} className='object-cover'></img>
-                                }
+                                <img src={item.imageUrl ?? PosterIcon} className='object-contain rounded-xl'></img>
                                 <div className='flex items-center gap-4'>
                                     <div className='flex flex-col'>
                                         <div className='flex gap-2 justify-between'>

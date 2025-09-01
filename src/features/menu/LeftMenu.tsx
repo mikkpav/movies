@@ -1,10 +1,13 @@
 import LeftMenuItem from './LeftMenuItem';
 import LeftMenuSearchItem from './LeftMenuSearchItem';
-import type { SearchMovieItem } from '../../types/movies';
+import { useNavigate } from 'react-router-dom';
 
 export default function LeftMenu() {
-    const handleSelect = (item: SearchMovieItem) => {
-        console.log('>>> selected movie: ', item.title);
+    const navigate = useNavigate();
+
+    const handleSelect = (movieId: number) => {
+        console.log('>>> selected movie: ', movieId);
+        navigate(`/movie/${movieId}`);
     };
 
     return (

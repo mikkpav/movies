@@ -19,7 +19,7 @@ export function useMovieDetails(id: number) {
         } finally {
             setLoading(false);
         }
-    }, []);
+    }, [id]);
 
     useEffect(() => {
         fetchMovieDetails();

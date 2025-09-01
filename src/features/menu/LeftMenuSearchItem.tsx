@@ -4,7 +4,7 @@ import type { Movie } from '../../types/movies';
 import useSearch from './hooks/useSearch';
 
 interface SearchDropdownProps {
-    onSelect: (item: DropdownItem) => void;
+    onSelect: (movieId: number) => void;
 }
 
 export default function LeftMenuSearchItem({ onSelect }: SearchDropdownProps) {
