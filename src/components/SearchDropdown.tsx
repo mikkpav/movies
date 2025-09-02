@@ -30,6 +30,7 @@ export default function SearchDropdown({ query, results, onQueryChange, onSelect
     };
 
     const handleSelect = (item: DropdownItem) => {
+        onQueryChange('');
         onSelect(item.id);
         setIsOpen(false);
     };
@@ -51,18 +52,26 @@ export default function SearchDropdown({ query, results, onQueryChange, onSelect
     }, []);
 
     const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-        console.log('index: ', selectedIndex)
-        if (event.key === 'Escape') {
-            setIsOpen(false);
-        } else if (event.key == 'ArrowDown') {
-            event.preventDefault();
-            setSelectedIndex(prev => prev === results.length - 1 ? 0 : prev + 1)
-        } else if (event.key == 'ArrowUp') {
-            event.preventDefault();
-            setSelectedIndex(prev => prev === 0 ? results.length - 1 : prev - 1)
-        } else if (event.key === "Enter" && selectedIndex >= 0) {
-            handleSelect(results[selectedIndex]);
-        } 
+        const keyHandlers: Record<string, () => void> = {
+            Escape: () => {
+                setIsOpen(false);
+            },
+            ArrowDown: () => {
+                event.preventDefault();
+                setSelectedIndex(prev => prev === results.length - 1 ? 0 : prev + 1)
+            },
+            ArrowUp: () => {
+                event.preventDefault();
+                setSelectedIndex(prev => prev === 0 ? results.length - 1 : prev - 1)
+            },
+            Enter: () => {
+                if (selectedIndex >= 0) {
+                    handleSelect(results[selectedIndex]);
+                }
+            }
+        }
+
+        keyHandlers[event.key]?.();
     };
 
     return (
@@ -73,7 +82,7 @@ export default function SearchDropdown({ query, results, onQueryChange, onSelect
                 onFocus={() => setIsOpen(true)}
                 onChange={handleChange}
                 onKeyDown={handleKeyPress}
-                className="h-12 px-2 border rounded-md w-full"
+                className='h-11 px-2 border rounded-md w-full'
                 placeholder="Search movies..."
             />
             {isOpen && results.length > 0 && (
