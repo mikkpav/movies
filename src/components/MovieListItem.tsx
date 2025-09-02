@@ -38,9 +38,9 @@ export default function MovieListItem({ movie }: MovieListItemProps) {
                     className="flex-1 font-list-item-content cursor-pointer"
                     onClick={navigateToMovieDetails}
                 >
-                    <span className="line-clamp-3">{movie.overview}</span>
+                    <span className='line-clamp-3'>{movie.overview}</span>
                 </p>
-                <p className="">{movie.voteAverage}</p>
+                <p className='font-list-item-content'>{movie.voteAverage}</p>
             </div>
         </div>
     );
