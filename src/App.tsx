@@ -7,7 +7,8 @@ import FilmIcon from './assets/film.png';
 import MovieDetailsPage from './features/details/pages/MovieDetailsPage';
 import FavoriteListPage from './features/favorites/pages/FavoriteListPage';
 import { FavoritesProvider } from './contexts/FavoritesContext';
-import { AuthProvider, useAuth } from './contexts/AuthContext';
+import { useAuth } from './contexts/useAuth';
+import { AuthProvider } from './contexts/AuthProvider';
 
 function App() {
     const { user, loading } = useAuth();
