@@ -19,7 +19,7 @@ export const toggleFavoriteMovie = async (movieId: number): Promise<AxiosRespons
 
 export const getFavorites = async () => {
     const userId = getUserId();
-    return moviesClient.get('/favorites', { params: { userId: userId }});
+    return moviesClient.get('/favorites/ids', { params: { userId: userId }});
 };
 
 export const getFavoriteMovies = async (): Promise<AxiosResponse<MovieDetails[]>> => {
