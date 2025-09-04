@@ -1,7 +1,7 @@
 import type { Movie, MovieDetails } from '../types/movies';
 import { useNavigate } from 'react-router-dom';
 import FavoriteToggle from './FavoriteToggle';
-import { useFavoritesContext } from '../features/favorites/hooks/FavoritesContext';
+import { useFavoritesContext } from '../contexts/FavoritesContext';
 
 type MovieListItemProps = {
     movie: Movie | MovieDetails;

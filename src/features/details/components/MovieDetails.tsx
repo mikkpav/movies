@@ -4,7 +4,7 @@ import StarIcon from '../../../assets/star.png'
 import BackButton from '../../../assets/back.png'
 import { useNavigate } from 'react-router-dom';
 import FavoriteToggle from '../../../components/FavoriteToggle';
-import { useFavoritesContext } from '../../favorites/hooks/FavoritesContext';
+import { useFavoritesContext } from '../../../contexts/FavoritesContext';
 import PosterIcon from '../../../assets/poster-icon.png';
 
 type MovieDetailsProps = {

@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'react';
-import { useFavorites } from './useFavorites';
+import { useFavorites } from '../features/favorites/hooks/useFavorites';
 
 const FavoritesContext = createContext<ReturnType<typeof useFavorites> | null> (null);
 
