@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect } from 'react';
 import type { Movie } from '../../../types/movies';
-import { searchForMovies } from '../../../api/movies';
+import { searchForMovies } from '../../../api/moviesPublic';
 
 export default function useSearch(query: string) {
     const [searchResults, setSearchResults] = useState<Movie[]>([]);

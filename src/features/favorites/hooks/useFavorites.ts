@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from 'react';
-import { toggleFavoriteMovie, getFavorites } from '../../../api/movies';
+import { toggleFavoriteMovie, getFavorites } from '../../../api/moviesAuthenticated';
 import type { Favorite } from '../../../types/movies';
 
 export function useFavorites() {

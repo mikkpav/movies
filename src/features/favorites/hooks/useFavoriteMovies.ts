@@ -1,8 +1,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import type { MovieDetails } from '../../../types/movies';
-import { getFavoriteMovies } from '../../../api/movies';
+import { getFavoriteMovies } from '../../../api/moviesAuthenticated';
 import { useFavoritesContext } from '../../../contexts/FavoritesContext';
-
 
 export function useFavoriteMovies() {
     const { favorites } = useFavoritesContext();

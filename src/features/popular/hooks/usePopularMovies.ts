@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback, useRef } from 'react';
 import type { Movie } from '../../../types/movies';
-import { getPopularMovies } from '../../../api/movies';
+import { getPopularMovies } from '../../../api/moviesPublic';
 
 export function usePopularMovies() {
     const [movies, setMovies] = useState<Movie[] | null>(null);
