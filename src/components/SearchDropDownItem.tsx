@@ -13,7 +13,6 @@ type SearchDropdownItemProps = {
 export default function SearchDropdownItem({ item, itemIndex, selectedIndex, onSelect, onMouseHover }: SearchDropdownItemProps) {
     return (
         <li
-            key={item.id}
             className={`p-3 hover:bg-gray-100 cursor-pointer overflow-hidden ${itemIndex === selectedIndex ? 'bg-gray-100' : ''}`}
             onClick={() => onSelect(item)}
             onMouseEnter={() => onMouseHover(itemIndex)}

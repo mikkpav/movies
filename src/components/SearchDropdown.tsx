@@ -70,6 +70,7 @@ export default function SearchDropdown({ query, results, onQueryChange, onSelect
                 <ul className='absolute w-full mt-1 md:w-100 bg-white border z-10 shadow-md rounded-md'>
                     {results.map((item, index) => (
                         <SearchDropdownItem 
+                            key={item.id}
                             item={item} 
                             itemIndex={index} 
                             selectedIndex={selectedIndex}
