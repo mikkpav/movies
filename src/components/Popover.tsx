@@ -43,7 +43,6 @@ export default function Popover({ isOpen, closeHandler, logoutHandler }: Popover
 
     function submitForm(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        console.log(`xxx submit email: ${email} password: ${password}`)
 
         if (tabSelected === 'Signup' && password === passwordRepeat) {
             signup(email, password).then(() => closeHandler());
