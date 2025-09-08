@@ -8,9 +8,7 @@ import {
     signupUser,
 } from '../api/moviesAuthenticated';
 
-export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
-    children,
-}) => {
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState(true);
 
@@ -38,6 +36,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
         } catch (error) {
             console.error('Failed to sign up user:', error);
             setUser(null);
+            throw error;
         } finally {
             setLoading(false);
         }
@@ -50,6 +49,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
         } catch (error) {
             console.error('Failed to log in user:', error);
             setUser(null);
+            throw error;
         } finally {
             setLoading(false);
         }

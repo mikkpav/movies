@@ -1,22 +1,19 @@
-import {
-    Description,
-    Dialog,
-    DialogPanel,
-    DialogTitle,
-} from '@headlessui/react';
+import { Description, Dialog, DialogPanel, DialogTitle } from '@headlessui/react';
 
 type AlertProps = {
     isOpen: boolean,
     title: string;
     description: string;
-    actionHandler: () => void;
+    actionTitle?: string,
+    cancelTitle?: string,
+    actionHandler?: () => void;
     cancelHandler?: () => void;
     closeHandler: () => void;
 };
 
-export default function Alert({ isOpen, title, description, actionHandler, cancelHandler, closeHandler }: AlertProps) {
+export default function Alert({ isOpen, title, description, actionTitle='OK', cancelTitle='Cancel', actionHandler, cancelHandler, closeHandler }: AlertProps) {
     const handleMainAction = () => {
-        actionHandler();
+        actionHandler?.();
         closeHandler();
     };
 
@@ -30,9 +27,9 @@ export default function Alert({ isOpen, title, description, actionHandler, cance
     });
 
     return (
-        <Dialog open={isOpen} onClose={handleClose} className="relative z-50">
-            <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
-                <DialogPanel className="max-w-lg space-y-6 border bg-white p-12">
+        <Dialog open={isOpen} onClose={handleClose} className='relative z-50'>
+            <div className='fixed inset-0 flex w-screen items-center justify-center p-4'>
+                <DialogPanel className='max-w-lg space-y-6 border bg-white p-12 rounded-lg shadow-xl'>
                     <DialogTitle className="font-bold">{title}</DialogTitle>
                     <Description className="pb-4">{description}</Description>
                     <div className="flex gap-4">
@@ -40,13 +37,13 @@ export default function Alert({ isOpen, title, description, actionHandler, cance
                             onClick={handleMainAction}
                             className="font-semibold cursor-pointer"
                         >
-                            Log out
+                            {actionTitle}
                         </button>
                         <button
                             onClick={handleCancelAction}
                             className="cursor-pointer"
                         >
-                            Cancel
+                            {cancelTitle}
                         </button>
                     </div>
                 </DialogPanel>

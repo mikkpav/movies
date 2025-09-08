@@ -40,7 +40,6 @@ function App() {
         navigate('/');
     }
 
-    console.log('user in component:', user);
     return (
         <FavoritesProvider>
             <div className="flex flex-col gap-6 m-4 md:m-0 md:pb-6">
@@ -100,7 +99,8 @@ function App() {
                 <Alert 
                     isOpen={logoutAlertOpen}
                     closeHandler={ () => setLogoutAlertOpen(false) }
-                    title='Log out' 
+                    title='Log out'
+                    actionTitle='Log out'
                     description='Are you sure you want to log out?'
                     actionHandler={ handleLogout }
                 />

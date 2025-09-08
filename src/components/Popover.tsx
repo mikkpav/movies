@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
 import { useAuth } from '../contexts/useAuth';
+import axios, { AxiosError } from 'axios';
 
 type PopoverProps = {
     isOpen: boolean;
@@ -16,6 +17,7 @@ export default function Popover({ isOpen, closeHandler, logoutHandler }: Popover
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [passwordRepeat, setPasswordRepeat] = useState<string>('');
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
@@ -44,13 +46,38 @@ export default function Popover({ isOpen, closeHandler, logoutHandler }: Popover
     function submitForm(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
 
-        if (tabSelected === 'Signup' && password === passwordRepeat) {
-            signup(email, password).then(() => closeHandler());
+        if (tabSelected === 'Signup' && password !== passwordRepeat) {
+            setError('Passwords didn\'t match');
+        } else if (tabSelected === 'Signup' && password === passwordRepeat) {
+            signup(email, password)
+            .then(() => closeHandler())
+            .catch((error) => {
+                if (axios.isAxiosError(error)) {
+                    if (error.response?.status === 400) {
+                        setError(error.response.data.error);
+                    } else {
+                        setError("Something went wrong, please try again");
+                    }    
+                } else {
+                    console.error("Unexpected error:", error);
+                }
+            });
         } else if (tabSelected === 'Login') {
-            login(email, password).then(() => closeHandler());
+            login(email, password)
+            .then(() => closeHandler())
+            .catch((error) => {
+                if (axios.isAxiosError(error)) {
+                    if (error.response?.status === 401) {
+                        setError('Invalid email or password');
+                    } else {
+                        setError("Something went wrong, please try again");
+                    }    
+                } else {
+                    console.error("Unexpected error:", error);
+                }
+            });
         }
-        // TODO: Don’t forget to handle errors (invalid credentials, duplicate signup, etc.).
-        // am i doing that right now with the asyncHandler?
+
         setEmail('');
         setPassword('');
         setPasswordRepeat('');
@@ -62,6 +89,11 @@ export default function Popover({ isOpen, closeHandler, logoutHandler }: Popover
             logoutHandler();
         });
     });
+
+    function selectTab(tab: Tab) {
+        setError(null);
+        setSelectedTab(tab);
+    }
 
     if (!isOpen) return null;
 
@@ -85,13 +117,13 @@ export default function Popover({ isOpen, closeHandler, logoutHandler }: Popover
                     <div className='flex justify-evenly py-4'>
                             <button
                                 className={`text-gray-600 flex-1 pb-4 text-md ${tabSelected === 'Login' ? 'border-b-2 border-gray-800' : 'border-b-2 border-white'}`}
-                                onClick={() => setSelectedTab('Login')}
+                                onClick={() => selectTab('Login')}
                             >
                                 Login
                             </button>
                         <button
                             className={`text-gray-600 flex-1 pb-4 text-md ${tabSelected === 'Signup' ? 'border-b-2 border-gray-800' : 'border-b-2 border-white'}`}
-                            onClick={() => setSelectedTab('Signup')}
+                            onClick={() => selectTab('Signup')}
                         >
                             Signup
                         </button>
@@ -158,6 +190,10 @@ export default function Popover({ isOpen, closeHandler, logoutHandler }: Popover
                                 >
                                     {tabSelected}
                                 </button>
+                            { error !== null 
+                                ? <p className='text-red-600 text-center'>{error}</p>
+                                : <></>
+                            }
                         </form>
                     </div>
                 </div>
