@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
 import { useAuth } from '../contexts/useAuth';
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 
 type PopoverProps = {
     isOpen: boolean;
