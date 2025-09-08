@@ -20,7 +20,7 @@ export default function MovieListItem({ movie }: MovieListItemProps) {
             <img
                 src={movie.posterPathSmall}
                 alt={movie.title}
-                className="object-contain cursor-pointer"
+                className='object-contain cursor-pointer'
                 onClick={navigateToMovieDetails}
             />
             <div className="flex flex-col justify-end gap-2">

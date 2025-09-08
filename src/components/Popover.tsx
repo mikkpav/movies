@@ -4,11 +4,12 @@ import { useAuth } from '../contexts/useAuth';
 type PopoverProps = {
     isOpen: boolean;
     closeHandler: () => void;
+    logoutHandler: () => void;
 };
 
 type Tab = 'Login' | 'Signup';
 
-export default function Popover({ isOpen, closeHandler }: PopoverProps) {
+export default function Popover({ isOpen, closeHandler, logoutHandler }: PopoverProps) {
     const { user, signup, login, logout } = useAuth();
     const popoverRef = useRef<HTMLDivElement>(null);
     const [tabSelected, setSelectedTab] = useState<Tab>('Login');
@@ -57,8 +58,10 @@ export default function Popover({ isOpen, closeHandler }: PopoverProps) {
     }
 
     const handleLogout = (() => {
-        // TODO: when th user is logged out the favorites list stays if it's in front
-        logout().then(() => closeHandler());
+        logout().then(() => {
+            closeHandler()
+            logoutHandler();
+        });
     });
 
     if (!isOpen) return null;
