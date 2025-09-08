@@ -17,7 +17,7 @@ import Alert from './components/Alert';
 function App() {
     const [loginPopoverOpen, setLoginPopoverOpen] = useState(false);
     const navigate = useNavigate();
-    const { user, logout, loading } = useAuth();
+    const { user, logout } = useAuth();
     const [logoutAlertOpen, setLogoutAlertOpen] = useState(false)
 
     // if (loading) return <div>Loading...</div>;
