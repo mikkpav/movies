@@ -23,12 +23,11 @@ export function useFavorites() {
     }, [user]);
 
     const toggleFavorite = useCallback((id: number) => {
-        console.log('>>> user: ', user);
         if (!user) {
             
             return;
         }
-        console.log('>>> user2: ', user);
+        
         toggleFavoriteMovie(id)
             .then((response) => {
                 const { movieId, action, createdAt } = response.data;
