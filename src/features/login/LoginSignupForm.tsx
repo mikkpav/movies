@@ -1,4 +1,3 @@
-import useLoginSignup from '../../hooks/useLoginSignup';
 import type { Tab } from './LoginSignup';
 
 type LoginSignupFormProps = {
@@ -10,6 +9,7 @@ type LoginSignupFormProps = {
     setPasswordRepeat: (passwordRepeat: string) => void;
     tabSelected: Tab;
     submitData: () => void;
+    error: string;
 };
 
 export default function LoginSignupForm({
@@ -21,8 +21,8 @@ export default function LoginSignupForm({
     setPasswordRepeat,
     tabSelected,
     submitData,
+    error
 }: LoginSignupFormProps) {
-    const { error } = useLoginSignup();
 
     async function submitForm(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();

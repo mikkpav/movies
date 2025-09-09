@@ -27,7 +27,7 @@ export default function useLoginSignup() {
 
         if (password !== passwordRepeat) {
             handleError("Passwords didn't match");
-            return true;
+            return false;
         }
 
         try {

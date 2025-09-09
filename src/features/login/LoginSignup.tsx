@@ -9,7 +9,7 @@ type LoginSignupProps = {
 };
 
 export default function LoginSignup({ closeHandler }: LoginSignupProps) {
-    const { clearError, startLogin, startSignup } = useLoginSignup();
+    const { error, clearError, startLogin, startSignup } = useLoginSignup();
     const [tabSelected, setSelectedTab] = useState<Tab>('Login');
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
@@ -34,7 +34,9 @@ export default function LoginSignup({ closeHandler }: LoginSignupProps) {
                 closeHandler();
             }
         } else if (tabSelected === 'Login') {
+            console.log('>> before startLogin')
             const success = await startLogin(email, password);
+            console.log('>> after startLogin success: ', success)
             if (success) {
                 clearFields();
                 closeHandler();
@@ -76,6 +78,7 @@ export default function LoginSignup({ closeHandler }: LoginSignupProps) {
                     setPasswordRepeat={setPasswordRepeat}
                     tabSelected={tabSelected}
                     submitData={submitData}
+                    error={error}
                 />
             </div>
         </div>
